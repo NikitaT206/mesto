@@ -1,0 +1,11 @@
+@import url(/vendor/normalize.css);
+@import url(/fonts/fonts.css);
+
+body {
+  font-family: 'inter', Arial, Helvetica, sans-serif;
+  
+}
+
+h1 {
+  font-weight: 400;
+}
