@@ -1,11 +1,33 @@
 @import url(/vendor/normalize.css);
 @import url(/fonts/fonts.css);
 
-body {
-  font-family: 'inter', Arial, Helvetica, sans-serif;
-  
+.page {
+  background-color: black;
+  color: white;
+  font-family: 'inter';
 }
 
-h1 {
-  font-weight: 400;
+.container {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.header {
+  padding-top: 45px;
+  margin-bottom: 41px;
+}
+
+.header__logo {
+  width: 142px;
+  height: 33px;
+}
+
+.line {
+  width: 100%;
+  max-width: 880px;
+  height: 1px;
+  background-color: #545454;
+  opacity: .7;
+  margin: 0 auto;
 }
