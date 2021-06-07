@@ -1,33 +1,23 @@
 @import url(/vendor/normalize.css);
 @import url(/fonts/fonts.css);
+@import url(/blocks/page/page.css);
+@import url(/blocks/container/container.css);
+@import url(/blocks/opacity/opacity.css);
+@import url(/blocks/header/header.css);
+@import url(/blocks/header/__logo/header__logo.css);
+@import url(/blocks/line/line.css);
+@import url(/blocks/profile/profile.css);
+@import url(/blocks/profile/__info/profile__info.css);
+@import url(/blocks/profile/__photo/profile__photo.css);
+@import url(/blocks/profile/__text-info/profile__text-info.css);
+@import url(/blocks/profile/__name/profile__name.css);
+@import url(/blocks/profile/__job/profile__job.css);
+@import url(/blocks/profile/__edit-button/profile__edit-button.css);
+@import url(/blocks/profile/__add-button/profile__add-button.css);
 
-.page {
-  background-color: black;
-  color: white;
-  font-family: 'inter';
-}
 
-.container {
-  width: 100%;
-  max-width: 880px;
-  margin: 0 auto;
-}
 
-.header {
-  padding-top: 45px;
-  margin-bottom: 41px;
-}
 
-.header__logo {
-  width: 142px;
-  height: 33px;
-}
 
-.line {
-  width: 100%;
-  max-width: 880px;
-  height: 1px;
-  background-color: #545454;
-  opacity: .7;
-  margin: 0 auto;
-}
+
+

@@ -1,0 +1,7 @@
+.profile__add-button {
+  min-width: 150px;
+  min-height: 50px;
+  background: url(/images/icons/AddButton.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
