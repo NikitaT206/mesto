@@ -4,11 +4,17 @@
   height: 1px;
   background-color: #545454;
   opacity: .7;
-  margin: 0 auto 36.25px;
+  margin: 0 auto 36px;
 }
 
 @media screen and (max-width: 1024px) {
   .line {
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .line {
+    margin: 0 auto 38px;
   }
 }
