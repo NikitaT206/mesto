@@ -1,0 +1,7 @@
+.place__like {
+  width: 22px;
+  height: 19px;
+  background: url(/images/icons/Heart.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

@@ -6,3 +6,9 @@
   opacity: .7;
   margin: 0 auto 36.25px;
 }
+
+@media screen and (max-width: 1024px) {
+  .line {
+    max-width: 100%;
+  }
+}
