@@ -6,6 +6,11 @@
   background-size: contain;
   box-sizing: border-box;
   transition: .3s ease;
+  border: none;
+  background-color: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .place__like:active {

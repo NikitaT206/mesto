@@ -26,13 +26,11 @@ function formSubmitHandler(evt) {
 
 popupForm.addEventListener('submit', formSubmitHandler)
 
-profileEditButton.addEventListener('click', function (evt) {
-  evt.preventDefault()
+profileEditButton.addEventListener('click', function () {
   popup.classList.add('popup_opened')
 })
 
-popupCloseButton.addEventListener('click', function (evt) {
-  evt.preventDefault()
+popupCloseButton.addEventListener('click', function () {
   inputName.value = profileName.textContent
   inputJob.value = profileJob.textContent
   popup.classList.remove('popup_opened')

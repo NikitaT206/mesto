@@ -5,11 +5,21 @@
   background: url(../../../images/icons/EditButton.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  align-self: center;
-  position: absolute;
-  top: 15px;
-  right: -42px;
-  z-index: 2;
+  position: relative;
+  top: 3px;
+  padding: 0;
+  border: none;
+  background-color: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__edit-button  {
+   position: absolute;
+   top: 15px;
+   right: -40px;
+  }
 }
 
 @media screen and (max-width: 550px) {

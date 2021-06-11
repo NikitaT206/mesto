@@ -6,7 +6,10 @@
   background: url(../../../images/icons/Vector.png);
   background-repeat: no-repeat;
   background-position: center;
-  box-sizing: border-box;
+  background-color: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 @media screen and (max-width: 768px) {
