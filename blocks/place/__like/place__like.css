@@ -1,7 +1,7 @@
 .place__like {
   width: 22px;
   height: 19px;
-  background: url(/images/icons/Heart.svg);
+  background: url(../../../images/icons/Heart.svg);
   background-repeat: no-repeat;
   background-size: contain;
   box-sizing: border-box;
@@ -9,6 +9,6 @@
 }
 
 .place__like:active {
-  background: url(/images/icons/BlackHeart.png);
+  background: url(../../../images/icons/BlackHeart.png);
   opacity: 1;
 }
