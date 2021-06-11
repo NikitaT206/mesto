@@ -4,4 +4,11 @@
   background: url(/images/icons/Heart.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  box-sizing: border-box;
+  transition: .3s ease;
+}
+
+.place__like:active {
+  background: url(/images/icons/BlackHeart.png);
+  opacity: 1;
 }

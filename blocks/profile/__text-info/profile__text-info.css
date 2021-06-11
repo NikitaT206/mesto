@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 0 18px;
   position: relative;
+  width: 100%;
+  max-width: 294px;
 }
 
 @media screen and (max-width: 768px) {
@@ -10,13 +12,13 @@
     margin-bottom: 36px;
     display: flex;
     flex-wrap: wrap;
-    max-width: 500px;
+    max-width: 350px;
     justify-content: center;
     text-align: center;
   }
 }
 
-@media screen and (max-width: 525px) {
+@media screen and (max-width: 550px) {
   .profile__text-info {
     max-width: 300px;
    
