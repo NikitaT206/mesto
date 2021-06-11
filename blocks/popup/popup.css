@@ -3,7 +3,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.500);
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 100;

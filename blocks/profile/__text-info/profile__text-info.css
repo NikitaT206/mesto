@@ -10,17 +10,7 @@
 @media screen and (max-width: 768px) {
   .profile__text-info {
     margin-bottom: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 350px;
     justify-content: center;
     text-align: center;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .profile__text-info {
-    max-width: 300px;
-   
   }
 }
