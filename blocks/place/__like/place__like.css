@@ -11,9 +11,16 @@
   outline: none;
   cursor: pointer;
   padding: 0;
+  transition: opacity .2s ease;
+}
+
+.place__like:hover {
+  opacity: .5;
 }
 
 .place__like:active {
-  background: url(../../../images/icons/BlackHeart.png);
+  background: url(../../../images/icons/BlackHeart.svg);
   opacity: 1;
 }
+
+

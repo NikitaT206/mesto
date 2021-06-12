@@ -9,39 +9,39 @@
   <title>Mesto</title>
 </head>
 
-<body class='page'>
+<body class="page">
 
   <div class="popup">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form">
-        <input class="popup__input input-name" type="text">
-        <input class="popup__input input-job" type="text">
+      <form class="popup__form" name="popupForm">
+        <input class="popup__input" id="inputName" type="text" name="inputName">
+        <input class="popup__input" id="inputJob" type="text" name="inputJob">
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
-      <a class="popup__close-button opacity" href="#"></a>
+      <button class="popup__close-button opacity" type="button"></button>
     </div>
   </div>
 
-  <header class="header container">
-    <img class="header__logo" src="./images/logo/Vector.png" alt="Логотип mesto">
+  <header class="header">
+    <div class="container">
+      <img class="header__logo" src="./images/logo/Mesto.svg" alt="Логотип Место">
+    </div>
   </header>
-
-  <div class="line"></div>
 
   <main class="main-page">
 
-    <div class="profile container">
+    <section class="profile container">
       <div class="profile__info">
         <img class="profile__photo" src="./images/profile-fotos/image.jpg" alt="Фотография профиля">
         <div class="profile__text-info">
-          <h3 class="profile__name">Жак-Ив Кусто</h3>
-          <button class="profile__edit-button opacity"></button>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button opacity" type="button"></button>
           <p class="profile__job">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button opacity"></button>
-    </div>
+      <button class="profile__add-button opacity" type="button"></button>
+    </section>
 
     <section class="places container">
       <ul class="places__list">
@@ -51,7 +51,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Холмск</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
 
@@ -60,7 +60,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Мыс Евстафьева</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
 
@@ -69,7 +69,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Невельск</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
 
@@ -78,7 +78,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Поронайск</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
 
@@ -87,7 +87,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Пригородное</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
 
@@ -96,7 +96,7 @@
           <div class="place__text-block">
             <h3 class="place__name">
               Мыс Гвоздева</h3>
-            <button class="place__like opacity"></button>
+            <button class="place__like" type="button"></button>
           </div>
         </li>
       </ul>

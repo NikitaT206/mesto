@@ -3,9 +3,10 @@
   height: 50px;
   border: 2px solid white;
   border-radius: 2px;
-  background: url(../../../images/icons/Vector.png);
+  background: url(../../../images/icons/Vector.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px;
   background-color: none;
   outline: none;
   cursor: pointer;
@@ -16,6 +17,11 @@
   .profile__add-button {
     width: 100%;
     max-width: 282px;
-    
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile__add-button {
+   background-size: 16px;
   }
 }
