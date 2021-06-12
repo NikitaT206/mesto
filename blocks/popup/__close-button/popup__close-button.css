@@ -1,9 +1,9 @@
 .popup__close-button {
   width: 40px;
   height: 40px;
-  background: url(../../../images/icons/CloseIcon.svg);
+  background: url(../../../images/icons/Closeicon.svg);
   background-repeat: no-repeat;
-  background-size: 180%; /* не уверен что это правильное решение, ничего лучше не придумал :)  */
+  background-size: cover;
   background-position: center;
   position: absolute;
   top: -40px;
