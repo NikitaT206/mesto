@@ -16,9 +16,6 @@
   opacity: .5;
 }
 
-.place__like:active {
-  background: url(../../../images/icons/BlackHeart.svg);
-  opacity: 1;
-}
+
 
 

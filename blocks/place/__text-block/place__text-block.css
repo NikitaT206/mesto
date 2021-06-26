@@ -6,4 +6,6 @@
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
+  min-height: 85px;
+  box-sizing: border-box;
 }

@@ -11,16 +11,38 @@
 
 <body class="page">
 
-  <div class="popup">
+  <div class="popup" id="editProfile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" name="popupForm">
-        <input class="popup__input" id="inputName" type="text" name="inputName">
-        <input class="popup__input" id="inputJob" type="text" name="inputJob">
+      <form class="popup__form" name="editProfileForm">
+        <input class="popup__input" id="input_name" type="text" name="input_name">
+        <input class="popup__input" id="input_job" type="text" name="input_job">
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-button opacity" type="button"></button>
     </div>
+  </div>
+
+  <div class="popup" id="newPlace">
+    <div class="popup__container">
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__form" name="addNewPlaceForm" id="newPlaceForm">
+        <input class="popup__input" id="input_place-name" type="text" name="input_place-name" placeholder="Название">
+        <input class="popup__input" id="input_place-link" type="text" name="input_place-link"
+          placeholder="Ссылка на картинку">
+        <button class="popup__save-button" type="submit">Создать</button>
+      </form>
+      <button class="popup__close-button opacity" type="button"></button>
+    </div>
+  </div>
+
+  <div class="popup" id="image">
+    <figure class="popup__figure">
+      <img class="popup__image" src="" alt="">
+      <figcaption class="popup__caption"></figcaption>
+      <button class="popup__close-button opacity" type="button"></button>
+    </figure>
+
   </div>
 
   <header class="header">
@@ -46,59 +68,19 @@
     <section class="places container">
       <ul class="places__list">
 
-        <li class="place">
-          <img class="place__image" src="./images/places/holmsk.jpg" alt="Холмск">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Холмск</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
+        <template id="placeTemplate">
+          <li class="place">
+            <div class="place__image-container">
+              <img class="place__image" src="" alt="">
+            </div>
+            <button class="place__delete-button opacity" type="button"></button>
+            <div class="place__text-block">
+              <h3 class="place__name"></h3>
+              <button class="place__like" type="button"></button>
+            </div>
+          </li>
+        </template>
 
-        <li class="place">
-          <img class="place__image" src="./images/places/mys-efstafeva.jpg" alt="Мыс Евстафьева">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Мыс Евстафьева</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="place">
-          <img class="place__image" src="./images/places/nevelsk.jpg" alt="Невельск">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Невельск</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="place">
-          <img class="place__image" src="./images/places/poronaysk.jpg" alt="Поронайск">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Поронайск</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="place">
-          <img class="place__image" src="./images/places/prigorodnoe.jpg" alt="Пригородное">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Пригородное</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
-
-        <li class="place">
-          <img class="place__image" src="./images/places/mys-gvozdeva.jpg" alt="Мыс Гвоздева">
-          <div class="place__text-block">
-            <h3 class="place__name">
-              Мыс Гвоздева</h3>
-            <button class="place__like" type="button"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
@@ -108,6 +90,7 @@
   </footer>
 
   <script src="./scripts/index.js"></script>
+
 
 </body>
 
