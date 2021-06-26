@@ -35,7 +35,7 @@ const inputNewCardName = document.querySelector('#input_place-name')
 const inputNewCardLink = document.querySelector('#input_place-link')
 const addNewPlaceForm = document.querySelector('#addNewPlaceForm')
 
-addNewPlaceButton.addEventListener('click', openAddNewPlacePopup)
+addNewPlaceButton.addEventListener('click', openNewPlacePopup)
 editProfileButton.addEventListener('click', openEditProfilePopup)
 addNewPlaceForm.addEventListener('submit', createNewCard)
 
@@ -98,20 +98,22 @@ function openEditProfilePopup() {
   popupEditProfile.classList.add('popup_opened')
 }
 
+function openNewPlacePopup() {
+  const newPlacePopup = document.querySelector('#newPlace')
+
+  closePopup()
+
+  newPlacePopup.classList.add('popup_opened')
+}
+
 function closePopup() {
-  const closePopupButton = document.querySelectorAll('.popup__close-button')
-  closePopupButton.forEach(btn => btn.addEventListener('click', function () {
+  const closePopupButtons = document.querySelectorAll('.popup__close-button')
+  closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
     btn.closest('.popup').classList.remove('popup_opened')
   }))
 }
 
-function openAddNewPlacePopup() {
-  const addNewPlacePopup = document.querySelector('#newPlace')
 
-  closePopup()
-
-  addNewPlacePopup.classList.add('popup_opened')
-}
 
 
 
