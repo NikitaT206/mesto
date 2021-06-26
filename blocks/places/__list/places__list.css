@@ -2,15 +2,15 @@
   padding: 0;
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 282px));
+  grid-template-columns: repeat(3, 282px);
   grid-template-rows: 1fr;
   gap: 20px 17px;
   margin: 0 auto 67px;
 }
 
-@media screen and (max-width: 1014px) {
+@media screen and (max-width: 1024px) {
   .places__list {
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
   }
 }
 
