@@ -8,7 +8,7 @@
   margin: 0 auto 67px;
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 1014px) {
   .places__list {
     grid-template-columns: 1fr 1fr
   }
