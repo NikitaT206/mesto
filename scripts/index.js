@@ -25,30 +25,78 @@ const initialCards = [
   },
 ];
 
-const ul = document.querySelector('.places__list')
-const editProfileButton = document.querySelector('.profile__edit-button')
-const addNewPlaceButton = document.querySelector('.profile__add-button')
+const cards = document.querySelector('.places__list')
+const cardTemplate = document.querySelector('#placeTemplate').content
+
+// элементы профиля
+
 const profileName = document.querySelector('.profile__name')
 const profileJob = document.querySelector('.profile__job')
-const cardTemplate = document.querySelector('#placeTemplate').content
+
+// элементы редактирования профиля
+
+const editProfileButton = document.querySelector('.profile__edit-button')
+const popupEditProfile = document.querySelector('#editProfile')
+const popupEditProfileForm = popupEditProfile.querySelector('.popup__form')
+const inputName = popupEditProfile.querySelector('#input_name')
+const inputJob = popupEditProfile.querySelector('#input_job')
+
+// элементы добавления новой карточки
+
+const addNewPlaceButton = document.querySelector('.profile__add-button')
+const popupAddCard = document.querySelector('#newPlace')
+const addNewCardForm = document.querySelector('#addNewPlaceForm')
 const inputNewCardName = document.querySelector('#input_place-name')
 const inputNewCardLink = document.querySelector('#input_place-link')
-const addNewPlaceForm = document.querySelector('#addNewPlaceForm')
 
-addNewPlaceButton.addEventListener('click', openNewPlacePopup)
-editProfileButton.addEventListener('click', openEditProfilePopup)
-addNewPlaceForm.addEventListener('submit', createNewCard)
+// элементы попапа с картинками
 
-function createInitialCard(name, link) {
+const popupImage = document.querySelector('#popupImage')
+const popupBigImage = document.querySelector('.popup__image')
+const popupBigImageCaption = document.querySelector('.popup__caption')
+
+const closePopupButtons = document.querySelectorAll('.popup__close-button')
+
+
+addNewPlaceButton.addEventListener('click', function () {
+  openPopup(popupAddCard)
+})
+
+editProfileButton.addEventListener('click', function () {
+  openPopup(popupEditProfile)
+})
+
+addNewCardForm.addEventListener('submit', createNewCard)
+
+closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
+  closePopup(popupAddCard)
+  closePopup(popupEditProfile)
+  closePopup(popupImage)
+}))
+
+popupEditProfileForm.addEventListener('submit', function (event) {
+  event.preventDefault()
+  profileName.textContent = inputName.value
+  profileJob.textContent = inputJob.value
+  closePopup(popupEditProfile)
+})
+
+// функция 
+
+function createCard(name, link) {
 
   const card = cardTemplate.querySelector('.place').cloneNode(true)
+  const placeImage = card.querySelector('.place__image')
+  const placeName = card.querySelector('.place__name')
 
-  card.querySelector('.place__image').src = link
-  card.querySelector('.place__image').alt = name
-  card.querySelector('.place__name').textContent = name
+  placeImage.src = link
+  placeImage.alt = name
+  placeName.textContent = name
 
-  card.querySelector('.place__like').addEventListener('click', (event) => {
-    card.querySelector('.place__like').classList.toggle('place__like_active')
+  const cardLike = card.querySelector('.place__like')
+
+  cardLike.addEventListener('click', (event) => {
+    cardLike.classList.toggle('place__like_active')
   })
 
   card.querySelector('.place__delete-button').addEventListener('click', (event) => {
@@ -56,62 +104,44 @@ function createInitialCard(name, link) {
   })
 
   card.querySelector('.place__image-container').addEventListener('click', (event) => {
+    popupBigImage.src = placeImage.src
+    popupBigImage.alt = placeImage.alt
+    popupBigImageCaption.textContent = placeName.textContent
 
-    const popupImage = document.querySelector('#popupImage')
-
-    closePopup()
-
-    popupImage.querySelector('.popup__image').src = card.querySelector('.place__image').src
-    popupImage.querySelector('.popup__image').alt = card.querySelector('.place__image').alt
-    popupImage.querySelector('.popup__caption').textContent = card.querySelector('.place__name').textContent
-
-    popupImage.classList.add('popup_opened')
+    openPopup(popupImage)
   })
 
-  ul.append(card)
+  return card
 }
 
-initialCards.map(card => createInitialCard(card.name, card.link))
+function addCard() {
+  initialCards.forEach(card => {
+    cards.append(createCard(card.name, card.link))
+  })
+}
+
+addCard()
 
 function createNewCard(event) {
   event.preventDefault()
-  createInitialCard(inputNewCardName.value, inputNewCardLink.value)
-  event.target.closest('.popup').classList.remove('popup_opened')
+  cards.append(createCard(inputNewCardName.value, inputNewCardLink.value))
+  closePopup(popupAddCard)
   addNewPlaceForm.reset()
 }
 
-function openEditProfilePopup() {
-  const popupEditProfile = document.querySelector('#editProfile')
-
-  popupEditProfile.querySelector('#input_name').value = profileName.textContent
-  popupEditProfile.querySelector('#input_job').value = profileJob.textContent
-
-  closePopup()
-
-  popupEditProfile.querySelector('.popup__form').addEventListener('submit', function (event) {
-    event.preventDefault()
-    profileName.textContent = popupEditProfile.querySelector('#input_name').value
-    profileJob.textContent = popupEditProfile.querySelector('#input_job').value
-    popupEditProfile.classList.remove('popup_opened')
-  })
-
-  popupEditProfile.classList.add('popup_opened')
+function openPopup(popup) {
+  popup.classList.add('popup_opened')
+  inputName.value = profileName.textContent
+  inputJob.value = profileJob.textContent
 }
 
-function openNewPlacePopup() {
-  const newPlacePopup = document.querySelector('#newPlace')
-
-  closePopup()
-
-  newPlacePopup.classList.add('popup_opened')
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
+  addNewPlaceForm.reset()
 }
 
-function closePopup() {
-  const closePopupButtons = document.querySelectorAll('.popup__close-button')
-  closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
-    btn.closest('.popup').classList.remove('popup_opened')
-  }))
-}
+
+
 
 
 
