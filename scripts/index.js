@@ -57,22 +57,15 @@ const popupBigImageCaption = document.querySelector('.popup__caption')
 
 const closePopupButtons = document.querySelectorAll('.popup__close-button')
 
-
 addNewPlaceButton.addEventListener('click', function () {
   openPopup(popupAddCard)
 })
 
+addNewCardForm.addEventListener('submit', createNewCard)
+
 editProfileButton.addEventListener('click', function () {
   openPopup(popupEditProfile)
 })
-
-addNewCardForm.addEventListener('submit', createNewCard)
-
-closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
-  closePopup(popupAddCard)
-  closePopup(popupEditProfile)
-  closePopup(popupImage)
-}))
 
 popupEditProfileForm.addEventListener('submit', function (event) {
   event.preventDefault()
@@ -81,7 +74,12 @@ popupEditProfileForm.addEventListener('submit', function (event) {
   closePopup(popupEditProfile)
 })
 
-// функция 
+closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
+  btn.closest('.popup').classList.remove('popup_opened')
+  addNewPlaceForm.reset()
+}))
+
+// функция создания карточки
 
 function createCard(name, link) {
 
@@ -114,6 +112,8 @@ function createCard(name, link) {
   return card
 }
 
+// функция добавления начальных карточек на страницу
+
 function addCard() {
   initialCards.forEach(card => {
     cards.append(createCard(card.name, card.link))
@@ -122,6 +122,8 @@ function addCard() {
 
 addCard()
 
+// функция добавления новой карточки
+
 function createNewCard(event) {
   event.preventDefault()
   cards.append(createCard(inputNewCardName.value, inputNewCardLink.value))
@@ -129,25 +131,26 @@ function createNewCard(event) {
   addNewPlaceForm.reset()
 }
 
+// функция открытия попапа
+
 function openPopup(popup) {
   popup.classList.add('popup_opened')
   inputName.value = profileName.textContent
   inputJob.value = profileJob.textContent
 }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened')
-  addNewPlaceForm.reset()
-}
 
 
+// в сообщении в ревью было написано что для закрытия попапа нужна отдельная функция, а в комментарии, что функцию зарытия попапа нужно удалить
+// не знаю как правильно, на всякий случай оставил вариант с функцией закрытия
 
+// function closePopup(popup) {
+//   popup.classList.remove('popup_opened')
+//   addNewPlaceForm.reset()
+// }
 
-
-
-
-
-
-
-
-
+// closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
+//   closePopup(popupAddCard)
+//   closePopup(popupEditProfile)
+//   closePopup(popupImage)
+// }))
