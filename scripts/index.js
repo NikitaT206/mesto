@@ -139,18 +139,7 @@ function openPopup(popup) {
   inputJob.value = profileJob.textContent
 }
 
-
-
-// в сообщении в ревью было написано что для закрытия попапа нужна отдельная функция, а в комментарии, что функцию зарытия попапа нужно удалить
-// не знаю как правильно, на всякий случай оставил вариант с функцией закрытия
-
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened')
-//   addNewPlaceForm.reset()
-// }
-
-// closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
-//   closePopup(popupAddCard)
-//   closePopup(popupEditProfile)
-//   closePopup(popupImage)
-// }))
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
+  addNewPlaceForm.reset()
+}
