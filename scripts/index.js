@@ -58,12 +58,15 @@ const popupBigImageCaption = document.querySelector('.popup__caption')
 const closePopupButtons = document.querySelectorAll('.popup__close-button')
 
 addNewPlaceButton.addEventListener('click', function () {
+  addNewPlaceForm.reset()
   openPopup(popupAddCard)
 })
 
 addNewCardForm.addEventListener('submit', createNewCard)
 
 editProfileButton.addEventListener('click', function () {
+  inputName.value = profileName.textContent
+  inputJob.value = profileJob.textContent
   openPopup(popupEditProfile)
 })
 
@@ -75,8 +78,8 @@ popupEditProfileForm.addEventListener('submit', function (event) {
 })
 
 closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
-  btn.closest('.popup').classList.remove('popup_opened')
-  addNewPlaceForm.reset()
+  const popup = btn.closest('.popup')
+  closePopup(popup)
 }))
 
 // функция создания карточки
@@ -114,32 +117,28 @@ function createCard(name, link) {
 
 // функция добавления начальных карточек на страницу
 
-function addCard() {
+function renderInitialCards() {
   initialCards.forEach(card => {
     cards.append(createCard(card.name, card.link))
   })
 }
 
-addCard()
+renderInitialCards()
 
 // функция добавления новой карточки
 
 function createNewCard(event) {
   event.preventDefault()
-  cards.append(createCard(inputNewCardName.value, inputNewCardLink.value))
+  cards.prepend(createCard(inputNewCardName.value, inputNewCardLink.value))
   closePopup(popupAddCard)
-  addNewPlaceForm.reset()
 }
 
 // функция открытия попапа
 
 function openPopup(popup) {
   popup.classList.add('popup_opened')
-  inputName.value = profileName.textContent
-  inputJob.value = profileJob.textContent
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
-  addNewPlaceForm.reset()
 }
