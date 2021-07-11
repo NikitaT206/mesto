@@ -18,12 +18,12 @@
         <div class="popup__input-container">
           <input class="popup__input" id="input_name" type="text" name="input_name" placeholder="Имя" minlength="2"
             maxlength="40" required>
-          <span class="popup__input-error input_name-error"></span>
+          <span class="popup__input-error" id="input_name-error"></span>
         </div>
         <div class="popup__input-container">
           <input class="popup__input" id="input_job" type="text" name="input_job" placeholder="Вид деятельности"
             minlength="2" maxlength="200" required>
-          <span class="popup__input-error input_job-error"></span>
+          <span class="popup__input-error" id="input_job-error"></span>
         </div>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
@@ -38,12 +38,12 @@
         <div class="popup__input-container">
           <input class="popup__input" id="input_place-name" type="text" name="input_place-name" placeholder="Название"
             required minlength="2" maxlength="30">
-          <span class="popup__input-error input_place-name-error"></span>
+          <span class="popup__input-error" id="input_place-name-error"></span>
         </div>
         <div class="popup__input-container">
           <input class="popup__input" id="input_place-link" type="url" name="input_place-link"
             placeholder="Ссылка на картинку" required>
-          <span class="popup__input-error input_place-link-error"></span>
+          <span class="popup__input-error" id="input_place-link-error"></span>
         </div>
         <button class="popup__save-button" type="submit">Создать</button>
       </form>
@@ -54,7 +54,7 @@
   <div class="popup" id="popupImage">
     <div class="popup__figure-container">
       <figure class="popup__figure">
-        <img class="popup__image" src="#" alt="">
+        <img class="popup__image" src="#" alt="#">
         <figcaption class="popup__caption"></figcaption>
       </figure>
       <button class="popup__close-button opacity" type="button"></button>

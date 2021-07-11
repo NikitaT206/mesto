@@ -1,7 +1,7 @@
 // показывает ошибки в инпутах 
 
 function showInputError(formElement, inputElement, errorMessage) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
   inputElement.classList.add('popup__input_type_error')
   errorElement.textContent = errorMessage
   errorElement.classList.add('popup__input-error_active')
@@ -10,7 +10,7 @@ function showInputError(formElement, inputElement, errorMessage) {
 // скрывает ошибки в инпутах
 
 function hideInputError(formElement, inputElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
   inputElement.classList.remove('popup__input_type_error')
   errorElement.classList.remove('popup__input-error_active')
   errorElement.textContent = ''
