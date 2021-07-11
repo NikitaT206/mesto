@@ -56,6 +56,9 @@ const popupBigImage = document.querySelector('.popup__image')
 const popupBigImageCaption = document.querySelector('.popup__caption')
 
 const closePopupButtons = document.querySelectorAll('.popup__close-button')
+const popups = document.querySelectorAll('.popup')
+
+// слушатели событий
 
 addNewPlaceButton.addEventListener('click', function () {
   addNewPlaceForm.reset()
@@ -81,6 +84,12 @@ closePopupButtons.forEach(btn => btn.addEventListener('click', function () {
   const popup = btn.closest('.popup')
   closePopup(popup)
 }))
+
+popups.forEach(cover => {
+  cover.addEventListener('mousedown', function (event) {
+    closePopup(event.target)
+  })
+})
 
 // функция создания карточки
 
@@ -137,8 +146,22 @@ function createNewCard(event) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupEscapeButton)
 }
+
+// функция закрытия попапа
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupEscapeButton)
+}
+
+// закрытие попапа на клавишу Escape
+
+function closePopupEscapeButton(event) {
+  if (event.key === 'Escape') {
+    popups.forEach((popup => {
+      closePopup(popup)
+    }))
+  }
 }

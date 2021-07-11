@@ -1,21 +1,13 @@
 .popup__input {
   border: none;
-  padding: 0 0 9px;
+  padding: 0 0 13px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
-  margin-bottom: 30px;
   font-size: 14px;
   line-height: 17px;
   width: 100%;
 }
 
-.popup__input:last-of-type {
-  margin-bottom: 48px;
-}
-
-
-@media screen and (max-width: 550px) {
-  .popup__input:last-of-type {
-    margin-bottom: 45px;
-  }
+.popup__input::placeholder {
+  color: #C4C4C4;
 }
