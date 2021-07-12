@@ -174,7 +174,7 @@ function toggleSubmitButton(popup) {
 function hidePopupError(popup) {
   const popupInput = popup.querySelector('.popup__input')
 
-  if (popup.contains(input)) {
+  if (popup.contains(popupInput)) {
     const popupInputs = popup.querySelectorAll('.popup__input')
     const popupInputErrors = popup.querySelectorAll('.popup__input-error')
 
