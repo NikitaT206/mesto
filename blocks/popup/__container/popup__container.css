@@ -8,6 +8,7 @@
   z-index: 100;
   padding: 34px 36px 35px 36px;
   position: relative;
+  cursor: default;
 }
 
 @media screen and (max-width: 550px) {

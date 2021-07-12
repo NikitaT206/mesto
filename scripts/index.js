@@ -109,7 +109,7 @@ function createCard(name, link) {
     cardLike.classList.toggle('place__like_active')
   })
 
-  card.querySelector('.place__delete-button').addEventListener('click', (event) => {
+  card.querySelector('.place__delete-button').addEventListener('click', () => {
     card.remove()
   })
 
@@ -146,7 +146,41 @@ function createNewCard(event) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  hidePopupError(popup)
+  toggleSubmitButton(popup)
   document.addEventListener('keydown', closePopupEscapeButton)
+}
+
+function toggleSubmitButton(popup) {
+  const inputs = popup.querySelectorAll('.popup__input')
+  const button = popup.querySelector('.popup__save-button')
+
+  inputs.forEach((input) => {
+    if (!input.value) {
+      button.classList.add('popup__save-button_inactive')
+      button.setAttribute('disabled', 'disabled')
+    }
+    else {
+      button.classList.remove('popup__save-button_inactive')
+      button.removeAttribute('disabled', 'disabled')
+    }
+  })
+}
+
+function hidePopupError(popup) {
+  const input = popup.querySelector('.popup__input')
+
+  if (popup.contains(input)) {
+    const inputs = popup.querySelectorAll('.popup__input')
+    const inputErrors = popup.querySelectorAll('.popup__input-error')
+
+    inputs.forEach((input) => {
+      input.classList.remove('popup__input_type_error')
+    })
+    inputErrors.forEach((error) => {
+      error.classList.remove('popup__input-error_active')
+    })
+  }
 }
 
 // функция закрытия попапа
@@ -160,8 +194,7 @@ function closePopup(popup) {
 
 function closePopupEscapeButton(event) {
   if (event.key === 'Escape') {
-    popups.forEach((popup => {
-      closePopup(popup)
-    }))
+    const popupActive = document.querySelector('.popup_opened')
+    closePopup(popupActive)
   }
 }

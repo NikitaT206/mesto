@@ -47,7 +47,6 @@ function toggleButtonState(inputList, buttonElement) {
   }
 }
 
-
 function setEventListeners(formElement, inputSelector, submitButtonSelector) {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector))
   const buttonElement = formElement.querySelector(submitButtonSelector)
@@ -59,7 +58,6 @@ function setEventListeners(formElement, inputSelector, submitButtonSelector) {
     })
   })
 }
-
 
 function enableValidation({ formSelector, ...config }) {
   const formList = Array.from(document.querySelectorAll(formSelector))
