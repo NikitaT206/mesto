@@ -151,33 +151,37 @@ function openPopup(popup) {
   document.addEventListener('keydown', closePopupEscapeButton)
 }
 
-function toggleSubmitButton(popup) {
-  const inputs = popup.querySelectorAll('.popup__input')
-  const button = popup.querySelector('.popup__save-button')
+// если value у инпута пустой делает кнопку не активной
 
-  inputs.forEach((input) => {
+function toggleSubmitButton(popup) {
+  const popupInputs = popup.querySelectorAll('.popup__input')
+  const popupSubmitButton = popup.querySelector('.popup__save-button')
+
+  popupInputs.forEach((input) => {
     if (!input.value) {
-      button.classList.add('popup__save-button_inactive')
-      button.setAttribute('disabled', 'disabled')
+      popupSubmitButton.classList.add('popup__save-button_inactive')
+      popupSubmitButton.setAttribute('disabled', 'disabled')
     }
     else {
-      button.classList.remove('popup__save-button_inactive')
-      button.removeAttribute('disabled', 'disabled')
+      popupSubmitButton.classList.remove('popup__save-button_inactive')
+      popupSubmitButton.removeAttribute('disabled', 'disabled')
     }
   })
 }
 
+// если у попапа есть инпуты скрывает ошибки валидации
+
 function hidePopupError(popup) {
-  const input = popup.querySelector('.popup__input')
+  const popupInput = popup.querySelector('.popup__input')
 
   if (popup.contains(input)) {
-    const inputs = popup.querySelectorAll('.popup__input')
-    const inputErrors = popup.querySelectorAll('.popup__input-error')
+    const popupInputs = popup.querySelectorAll('.popup__input')
+    const popupInputErrors = popup.querySelectorAll('.popup__input-error')
 
-    inputs.forEach((input) => {
+    popupInputs.forEach((input) => {
       input.classList.remove('popup__input_type_error')
     })
-    inputErrors.forEach((error) => {
+    popupInputErrors.forEach((error) => {
       error.classList.remove('popup__input-error_active')
     })
   }
