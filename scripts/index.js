@@ -49,12 +49,6 @@ const addNewCardForm = document.querySelector('#addNewPlaceForm')
 const inputNewCardName = document.querySelector('#input_place-name')
 const inputNewCardLink = document.querySelector('#input_place-link')
 
-// элементы попапа с картинками
-
-const popupImage = document.querySelector('#popupImage')
-const popupBigImage = document.querySelector('.popup__image')
-const popupBigImageCaption = document.querySelector('.popup__caption')
-
 const closePopupButtons = document.querySelectorAll('.popup__close-button')
 const popups = document.querySelectorAll('.popup')
 
@@ -91,54 +85,22 @@ popups.forEach(cover => {
   })
 })
 
-// функция создания карточки
+initialCards.forEach((card) => {
+  const defaultCard = new Card(card.name, card.link, '#placeTemplate')
+  const cardElement = defaultCard.generateCard()
 
-function createCard(name, link) {
-
-  const card = cardTemplate.querySelector('.place').cloneNode(true)
-  const placeImage = card.querySelector('.place__image')
-  const placeName = card.querySelector('.place__name')
-
-  placeImage.src = link
-  placeImage.alt = name
-  placeName.textContent = name
-
-  const cardLike = card.querySelector('.place__like')
-
-  cardLike.addEventListener('click', (event) => {
-    cardLike.classList.toggle('place__like_active')
-  })
-
-  card.querySelector('.place__delete-button').addEventListener('click', () => {
-    card.remove()
-  })
-
-  card.querySelector('.place__image-container').addEventListener('click', (event) => {
-    popupBigImage.src = placeImage.src
-    popupBigImage.alt = placeImage.alt
-    popupBigImageCaption.textContent = placeName.textContent
-
-    openPopup(popupImage)
-  })
-
-  return card
-}
-
-// функция добавления начальных карточек на страницу
-
-function renderInitialCards() {
-  initialCards.forEach(card => {
-    cards.append(createCard(card.name, card.link))
-  })
-}
-
-renderInitialCards()
+  cards.append(cardElement)
+})
 
 // функция добавления новой карточки
 
 function createNewCard(event) {
   event.preventDefault()
-  cards.prepend(createCard(inputNewCardName.value, inputNewCardLink.value))
+
+  const newCard = new Card(inputNewCardName.value, inputNewCardLink.value, '#placeTemplate')
+  const cardElement = newCard.generateCard()
+
+  cards.prepend(cardElement)
   closePopup(popupAddCard)
 }
 
@@ -202,3 +164,5 @@ function closePopupEscapeButton(event) {
     closePopup(popupActive)
   }
 }
+
+import { Card } from "./Card.js"
