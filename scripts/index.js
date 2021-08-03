@@ -25,6 +25,16 @@ const initialCards = [
   },
 ];
 
+const validationConfig =
+{
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
+
 const cards = document.querySelector('.places__list')
 const cardTemplate = document.querySelector('#placeTemplate').content
 
@@ -126,7 +136,7 @@ function toggleSubmitButton(popup) {
     }
     else {
       popupSubmitButton.classList.remove('popup__save-button_inactive')
-      popupSubmitButton.removeAttribute('disabled', 'disabled')
+      popupSubmitButton.removeAttribute('disabled')
     }
   })
 }
@@ -165,4 +175,17 @@ function closePopupEscapeButton(event) {
   }
 }
 
+const editPopupValidation = new FormValidator(validationConfig, '#editProfileForm')
+const newPlacePopupValidation = new FormValidator(validationConfig, '#addNewPlaceForm')
+
+
+editPopupValidation.enableValidation()
+newPlacePopupValidation.enableValidation()
+
 import { Card } from "./Card.js"
+import { FormValidator } from "./FormValidator.js"
+
+
+
+
+
