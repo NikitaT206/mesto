@@ -31,7 +31,7 @@ export class Card {
     popupBigImage.alt = this._element.querySelector('.place__image').alt
     popupBigImageCaption.textContent = this._element.querySelector('.place__name').textContent
 
-    popupImage.classList.add('popup_opened')
+    openPopup(popupImage)
   }
 
   _setEventListeners() {
@@ -59,3 +59,6 @@ export class Card {
     return this._element
   }
 }
+
+
+import { openPopup } from "./index.js"

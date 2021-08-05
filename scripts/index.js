@@ -116,47 +116,11 @@ function createNewCard(event) {
 
 // функция открытия попапа
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened')
-  hidePopupError(popup)
-  toggleSubmitButton(popup)
+  newPlacePopupValidation.hideErrors(popup)
+  newPlacePopupValidation.toggleSubmitButton(popup)
   document.addEventListener('keydown', closePopupEscapeButton)
-}
-
-// если value у инпута пустой делает кнопку не активной
-
-function toggleSubmitButton(popup) {
-  const popupInputs = popup.querySelectorAll('.popup__input')
-  const popupSubmitButton = popup.querySelector('.popup__save-button')
-
-  popupInputs.forEach((input) => {
-    if (!input.value) {
-      popupSubmitButton.classList.add('popup__save-button_inactive')
-      popupSubmitButton.setAttribute('disabled', 'disabled')
-    }
-    else {
-      popupSubmitButton.classList.remove('popup__save-button_inactive')
-      popupSubmitButton.removeAttribute('disabled')
-    }
-  })
-}
-
-// если у попапа есть инпуты скрывает ошибки валидации
-
-function hidePopupError(popup) {
-  const popupInput = popup.querySelector('.popup__input')
-
-  if (popup.contains(popupInput)) {
-    const popupInputs = popup.querySelectorAll('.popup__input')
-    const popupInputErrors = popup.querySelectorAll('.popup__input-error')
-
-    popupInputs.forEach((input) => {
-      input.classList.remove('popup__input_type_error')
-    })
-    popupInputErrors.forEach((error) => {
-      error.classList.remove('popup__input-error_active')
-    })
-  }
 }
 
 // функция закрытия попапа
