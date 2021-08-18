@@ -4,6 +4,7 @@ import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from "../components/PopupWithForm.js"
 import UserInfo from '../components/UserInfo.js';
+import './index.css'
 
 const initialCards = [
   {
@@ -114,15 +115,15 @@ const popupEdit = new PopupWithForm('#editProfile',
 
 popupEdit.setEventListeners()
 
-const popupAdd = new PopupWithForm('#newPlace', {
-  submit: (data) => {
-    const newCard = createCard(data['input_place-name'], data['input_place-link'])
+const popupAdd = new PopupWithForm('#newPlace',
+  {
+    submit: (data) => {
+      const newCard = createCard(data['input_place-name'], data['input_place-link'])
 
-    const cardElement = newCard.generateCard()
+      const cardElement = newCard.generateCard()
 
-    cards.prepend(cardElement)
-  }
-}
-)
+      cards.prepend(cardElement)
+    }
+  })
 
 popupAdd.setEventListeners()

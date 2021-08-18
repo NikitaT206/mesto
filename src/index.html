@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -63,7 +62,7 @@
 
   <header class="header">
     <div class="container">
-      <img class="header__logo" src="./images/logo/Mesto.svg" alt="Логотип Место">
+      <img class="header__logo" src="<%=require('./images/logo/Mesto.svg')%>" alt="Логотип Место">
     </div>
   </header>
 
@@ -71,7 +70,7 @@
 
     <section class="profile container">
       <div class="profile__info">
-        <img class="profile__photo" src="./images/profile-fotos/image.jpg" alt="Фотография профиля">
+        <img class="profile__photo" src="<%=require('./images/profile-fotos/image.jpg')%>" alt="Фотография профиля">
         <div class="profile__text-info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button opacity" type="button"></button>
@@ -96,7 +95,6 @@
             </div>
           </li>
         </template>
-
       </ul>
     </section>
   </main>
@@ -104,8 +102,6 @@
   <footer class="footer container">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-
-  <script type="module" src="./pages/index.js"></script>
 
 </body>
 
