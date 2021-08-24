@@ -60,6 +60,31 @@
     </div>
   </div>
 
+  <div class="popup" id="newAvatar">
+    <div class="popup__container">
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form class="popup__form" name="newAvatarForm" id="newAvatarForm" novalidate>
+        <div class="popup__input-container">
+          <input class="popup__input" id="input_avatar-link" name="input_avatar-link" type="url"
+            placeholder="Ссылка на картинку" required>
+          <span class="popup__input-error" id="input_avatar-link-error"></span>
+        </div>
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__close-button opacity" type="button"></button>
+    </div>
+  </div>
+
+  <div class="popup" id="deleteCard">
+    <div class="popup__container">
+      <h3 class="popup__title popup__title_type_lowmargin">Вы уверены?</h3>
+      <form class="popup__form" name="deleteCardForm" id="deleteCardForm">
+        <button class="popup__save-button" type="submit">Да</button>
+      </form>
+      <button class="popup__close-button opacity" type="button"></button>
+    </div>
+  </div>
+
   <header class="header">
     <div class="container">
       <img class="header__logo" src="<%=require('./images/logo/Mesto.svg')%>" alt="Логотип Место">
@@ -70,7 +95,9 @@
 
     <section class="profile container">
       <div class="profile__info">
-        <img class="profile__photo" src="<%=require('./images/profile-fotos/image.jpg')%>" alt="Фотография профиля">
+        <div class="profile__photo-container">
+          <img class="profile__photo" src="<%=require('./images/profile-fotos/image.jpg')%>" alt="Фотография профиля">
+        </div>
         <div class="profile__text-info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button opacity" type="button"></button>
@@ -91,7 +118,10 @@
             <button class="place__delete-button opacity" type="button"></button>
             <div class="place__text-block">
               <h3 class="place__name"></h3>
-              <button class="place__like" type="button"></button>
+              <div class="place__like-container">
+                <button class="place__like" type="button"></button>
+                <span class="place__like-counter">0</span>
+              </div>
             </div>
           </li>
         </template>
