@@ -1,18 +1,23 @@
+import { avatar } from "../utils/constants"
+
 export default class UserInfo {
-  constructor(userNameElement, userInfoElement) {
-    this._userNameElement = userNameElement;
-    this._userInfoElement = userInfoElement;
+  constructor(userNameElement, userInfoElement, userAvatarElement) {
+    this._userNameElement = userNameElement
+    this._userInfoElement = userInfoElement
+    this._userAvatarElement = userAvatarElement
   }
 
   getUserInfo() {
     return {
       name: this._userNameElement.textContent,
-      job: this._userInfoElement.textContent
-    };
+      job: this._userInfoElement.textContent,
+      avatar: this._userAvatarElement.textContent
+    }
   }
 
-  setUserInfo(name, job) {
-    this._userNameElement.textContent = name
-    this._userInfoElement.textContent = job
+  setUserInfo(data) {
+    this._userNameElement.textContent = data.name
+    this._userInfoElement.textContent = data.about
+    this._userAvatarElement.src = data.avatar
   }
 }

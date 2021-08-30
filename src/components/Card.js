@@ -1,9 +1,11 @@
 export class Card {
-  constructor(name, link, cardSelector, { handleCardClick }) {
-    this._name = name
-    this._link = link
+  constructor(data, cardSelector, { handleCardClick, handleDeleteCardClick, like, dislike }) {
+    this._data = data
     this._cardSelector = cardSelector
     this.handleCardClick = handleCardClick
+    this.handleDeleteCardClick = handleDeleteCardClick
+    this.like = like
+    this.dislike = dislike
   }
 
   _getTemplate() {
@@ -16,35 +18,78 @@ export class Card {
   }
 
   _likeCard() {
-    this._element.querySelector('.place__like').classList.toggle('place__like_active')
+    this._likeButton.classList.add('place__like_active')
   }
 
-  _deleteCard() {
+  _dislikeCard() {
+    this._likeButton.classList.remove('place__like_active')
+  }
+
+  _setLike(data) {
+    this._likeCard()
+    this.like(data)
+  }
+
+  _deleteLike(data) {
+    this._dislikeCard()
+    this.dislike(data)
+  }
+
+  deleteCard() {
     this._element.remove()
   }
 
   _setEventListeners() {
-    this._element.querySelector('.place__like').addEventListener('click', () => {
-      this._likeCard()
+    this._likeButton.addEventListener('click', () => {
+      if (!this._likeButton.classList.contains('place__like_active')) {
+        this._setLike(this._data)
+      }
+      else {
+        this._deleteLike(this._data)
+      }
     })
 
-    this._element.querySelector('.place__delete-button').addEventListener('click', () => {
-      this._deleteCard()
-    })
+    this._deleteButton.addEventListener('click',
+      () => {
+        this.handleDeleteCardClick(this._data)
+      }
+    )
 
     this._element.querySelector('.place__image-container').addEventListener('click', () => {
-      this.handleCardClick(this._name, this._link)
+      this.handleCardClick(this._data)
     })
+  }
+
+  setLikeCount(data) {
+    this._likeCounter.textContent = data.likes.length
+  }
+
+  _checkLikes() {
+    this._data.likes.forEach((like) => {
+      if (like._id == '5f65720cd05a004f4257a8f2') { //надо как-то засунуть сюда Id
+        this._likeCard();
+      }
+    })
+  }
+
+  _checkMyCards() {
+    if (this._data.owner._id != '5f65720cd05a004f4257a8f2') { // и сюда тоже
+      this._deleteButton.remove()
+    }
   }
 
   generateCard() {
     this._element = this._getTemplate()
+    this._likeCounter = this._element.querySelector('.place__like-counter')
+    this._likeButton = this._element.querySelector('.place__like')
+    this._deleteButton = this._element.querySelector('.place__delete-button')
+    this._element.querySelector('.place__image').src = this._data.link
+    this._element.querySelector('.place__image').alt = this._data.name
+    this._element.querySelector('.place__name').textContent = this._data.name
+    this.setLikeCount(this._data)
+    this._checkLikes()
+    this._checkMyCards()
     this._setEventListeners()
-
-    this._element.querySelector('.place__image').src = this._link
-    this._element.querySelector('.place__image').alt = this._name
-    this._element.querySelector('.place__name').textContent = this._name
-
     return this._element
   }
 }
