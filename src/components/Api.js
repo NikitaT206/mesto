@@ -1,5 +1,3 @@
-import { inputJob } from "../utils/constants"
-
 export class Api {
   constructor(options) {
     this._url = options.url
