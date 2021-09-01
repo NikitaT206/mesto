@@ -57,18 +57,19 @@ const api = new Api({
 })
 
 let tempCard
+let userId
 
 const info = new UserInfo(profileName, profileJob, avatar)
 
-api.getUserInfo().then(res => {
-  profileJob.textContent = res.about
-  profileName.textContent = res.name
-  avatar.src = res.avatar
-})
-
-api.getInitialCard().then(res => {
-  cardList.renderItems(res)
-})
+api.getInitialData()
+  .then(data => {
+    const [userData, cardsData] = data
+    info.setUserInfo(userData)
+    userId = userData._id
+    cardList.renderItems(cardsData)
+  }
+  )
+  .catch(err => console.log(err))
 
 const cardList = new Section({
   renderer: (data) => {
@@ -80,24 +81,34 @@ const cardList = new Section({
   }
 }, '.places__list')
 
-
 const createCard = (data) => {
   const card = new Card(
     data,
     '#placeTemplate',
+    userId,
     {
       handleCardClick: (data) => {
         popupImage.open(data.name, data.link)
       },
       like: (data) => {
-        api.setLike(data).then((res) => {
-          card.setLikeCount(res)
-        })
+        api.setLike(data)
+          .then((res) => {
+            card.setLikeCount(res)
+          })
+          .then(() => {
+            card.likeCard()
+          })
+          .catch((err) => console.log(err))
       },
       dislike: (data) => {
-        api.deleteLike(data).then((res) => {
-          card.setLikeCount(res)
-        })
+        api.deleteLike(data)
+          .then((res) => {
+            card.setLikeCount(res)
+          })
+          .then(() => {
+            card.dislikeCard()
+          })
+          .catch((err) => console.log(err))
       },
       handleDeleteCardClick: (data) => {
         tempCard = card
@@ -116,6 +127,7 @@ const popupEdit = new PopupWithForm('#editProfile',
         .then((res) => {
           info.setUserInfo(res)
         })
+        .then(() => popupEdit.close())
         .catch(err => console.log(err)
         )
         .finally(() => popupEdit.renderLoading(false))
@@ -134,6 +146,7 @@ const popupAdd = new PopupWithForm('#newPlace',
           const cardElement = card.generateCard()
           cardList.prependItem(cardElement)
         })
+        .then(() => popupAdd.close())
         .catch(err => console.log(err)
         )
         .finally(() => popupAdd.renderLoading(false))
@@ -152,6 +165,7 @@ const deletePopup = new PopupWithConfirmation('#deleteCard', {
       .then(() => {
         tempCard.deleteCard()
       })
+      .then(() => deletePopup.close())
       .catch(err => console.log(err)
       )
       .finally(() => deletePopup.renderLoading(false))
@@ -167,6 +181,7 @@ const popupAvatar = new PopupWithForm('#newAvatar', {
       .then((res) => {
         info.setUserInfo(res)
       })
+      .then(() => popupAvatar.close())
       .catch(err => console.log(err)
       )
       .finally(() => {

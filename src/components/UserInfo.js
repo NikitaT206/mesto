@@ -1,5 +1,3 @@
-import { avatar } from "../utils/constants"
-
 export default class UserInfo {
   constructor(userNameElement, userInfoElement, userAvatarElement) {
     this._userNameElement = userNameElement

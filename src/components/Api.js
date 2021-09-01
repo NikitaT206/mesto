@@ -16,7 +16,6 @@ export class Api {
       headers: this._headers
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   getInitialCard() {
@@ -24,7 +23,6 @@ export class Api {
       headers: this._headers
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   setUserInfo(data) {
@@ -37,7 +35,6 @@ export class Api {
       })
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   createCard(data) {
@@ -50,7 +47,6 @@ export class Api {
       })
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   deleteCard(data) {
@@ -59,7 +55,6 @@ export class Api {
       method: 'DELETE'
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   setLike(data) {
@@ -68,7 +63,6 @@ export class Api {
       method: 'PUT',
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   deleteLike(data) {
@@ -77,7 +71,6 @@ export class Api {
       method: 'DELETE',
     })
       .then(this._returnRes)
-      .catch(err => console.log(err))
   }
 
   setAvatar(data) {
@@ -90,6 +83,9 @@ export class Api {
     }
     )
       .then(this._returnRes)
-      .catch(err => console.log(err))
+  }
+
+  getInitialData() {
+    return Promise.all([this.getUserInfo(), this.getInitialCard()])
   }
 }

@@ -1,7 +1,8 @@
 export class Card {
-  constructor(data, cardSelector, { handleCardClick, handleDeleteCardClick, like, dislike }) {
+  constructor(data, cardSelector, userId, { handleCardClick, handleDeleteCardClick, like, dislike }) {
     this._data = data
     this._cardSelector = cardSelector
+    this._userId = userId
     this.handleCardClick = handleCardClick
     this.handleDeleteCardClick = handleDeleteCardClick
     this.like = like
@@ -17,21 +18,19 @@ export class Card {
     return cardElement
   }
 
-  _likeCard() {
+  likeCard() {
     this._likeButton.classList.add('place__like_active')
   }
 
-  _dislikeCard() {
+  dislikeCard() {
     this._likeButton.classList.remove('place__like_active')
   }
 
   _setLike(data) {
-    this._likeCard()
     this.like(data)
   }
 
   _deleteLike(data) {
-    this._dislikeCard()
     this.dislike(data)
   }
 
@@ -66,14 +65,14 @@ export class Card {
 
   _checkLikes() {
     this._data.likes.forEach((like) => {
-      if (like._id == '5f65720cd05a004f4257a8f2') { //надо как-то засунуть сюда Id
-        this._likeCard();
+      if (like._id === this._userId) { //надо как-то засунуть сюда Id
+        this.likeCard();
       }
     })
   }
 
   _checkMyCards() {
-    if (this._data.owner._id != '5f65720cd05a004f4257a8f2') { // и сюда тоже
+    if (this._data.owner._id !== this._userId) {
       this._deleteButton.remove()
     }
   }
